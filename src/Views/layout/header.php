@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= (BASE_URL === '' ? '' : BASE_URL) ?>/assets/css/style.css">
     <!-- Scripts -->
-    <script src="<?= BASE_URL ?>/assets/js/main.js" defer></script>
+    <script src="<?= (BASE_URL === '' ? '' : BASE_URL) ?>/assets/js/main.js" defer></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
