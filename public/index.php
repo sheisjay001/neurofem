@@ -87,17 +87,10 @@ header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'u
 $request = $_SERVER['REQUEST_URI'];
 // Remove query string
 $request = strtok($request, '?');
-// Remove base path if strictly in a subdirectory (e.g. /neurofem/public)
-// This is a hacky way to handle XAMPP subdirectory deployment
-$script_name = dirname($_SERVER['SCRIPT_NAME']);
-$script_name = str_replace('\\', '/', $script_name); // Fix windows backslashes
 
-// Only remove script path if it's not root to avoid stripping all slashes
-if ($script_name !== '/' && $script_name !== '/api') {
-    // Check if request actually starts with the script path
-    if (strpos($request, $script_name) === 0) {
-        $request = substr($request, strlen($script_name));
-    }
+// Remove base path if strictly in a subdirectory (e.g. /neurofem/public)
+if (BASE_URL !== '' && strpos($request, BASE_URL) === 0) {
+    $request = substr($request, strlen(BASE_URL));
 }
 
 if ($request == '/' || $request == '') {

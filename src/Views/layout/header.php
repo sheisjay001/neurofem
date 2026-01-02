@@ -82,8 +82,9 @@
                         <li><a href="<?= BASE_URL ?>/dashboard" class="btn btn-primary">Dashboard</a></li>
                         <li><a href="<?= BASE_URL ?>/auth/logout" class="btn btn-secondary">Logout</a></li>
                     <?php else: ?>
-                        <li><a href="<?= BASE_URL ?>/auth/login" class="btn btn-primary">Login</a></li>
-                    <?php endif; ?>
+        <li><a href="<?= BASE_URL ?>/auth/signup" class="btn btn-outline" style="margin-right: 5px;">Join Community</a></li>
+        <li><a href="<?= BASE_URL ?>/auth/login" class="btn btn-primary">Login</a></li>
+    <?php endif; ?>
                 </ul>
             </nav>
         </div>
