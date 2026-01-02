@@ -50,7 +50,12 @@ $request = strtok($request, '?');
 // Remove base path if strictly in a subdirectory (e.g. /neurofem/public)
 // This is a hacky way to handle XAMPP subdirectory deployment
 $script_name = dirname($_SERVER['SCRIPT_NAME']);
-$request = str_replace($script_name, '', $request);
+$script_name = str_replace('\\', '/', $script_name); // Fix windows backslashes
+
+// Only remove script path if it's not root to avoid stripping all slashes
+if ($script_name !== '/' && $script_name !== '/api') {
+    $request = str_replace($script_name, '', $request);
+}
 
 if ($request == '/' || $request == '') {
     $controllerName = 'Controllers\HomeController';
