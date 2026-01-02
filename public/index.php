@@ -15,6 +15,13 @@ require_once ROOT_PATH . '/config/database.php';
 // Determine Base URL
 $script_name = $_SERVER['SCRIPT_NAME'];
 $base_url = dirname($script_name);
+
+// Check for Vercel environment
+// If we are in /var/task (Lambda/Vercel) or have VERCEL env vars, base_url should be empty
+if (getenv('VERCEL') || isset($_SERVER['VERCEL']) || isset($_SERVER['NOW_REGION']) || strpos(ROOT_PATH, '/var/task') !== false) {
+    $base_url = '';
+}
+
 // Ensure no trailing slash unless it's just root
 if ($base_url === '/' || $base_url === '\\' || $base_url === '/api') {
     $base_url = '';
