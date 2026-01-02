@@ -19,6 +19,7 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
         <div class="container">
             <nav>
                 <a href="<?= isset($_SESSION['user_id']) ? BASE_URL . '/dashboard' : BASE_URL . '/' ?>" class="logo">

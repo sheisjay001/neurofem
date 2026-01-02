@@ -799,6 +799,11 @@ footer {
     border-color: var(--brand-primary);
 }
 
+/* Mobile Only Utilities */
+.mobile-only {
+    display: none;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     .hero h1 {
@@ -809,32 +814,74 @@ footer {
         display: block; /* Show hamburger on mobile */
     }
     
+    .mobile-only {
+        display: block;
+    }
+
     .nav-links {
-        display: none; /* Hide by default on mobile */
-        position: absolute;
-        top: 100%;
+        display: flex;
+        position: fixed;
+        top: 0;
         left: 0;
-        right: 0;
+        bottom: 0;
+        width: 280px;
+        max-width: 80vw;
         background: var(--bg-card);
         flex-direction: column;
-        padding: var(--spacing-md);
-        border-bottom: 1px solid var(--border-color);
-        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-xl);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+        border-right: 1px solid var(--border-color);
     }
 
     .nav-links.open {
-        display: flex; /* Show when open */
+        transform: translateX(0);
+    }
+
+    /* Overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(2px);
+    }
+
+    .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #mobile-menu-close {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        align-self: flex-end;
+        padding: 5px;
+        margin-bottom: var(--spacing-md);
     }
 
     .nav-links li {
         width: 100%;
-        text-align: center;
+        text-align: left;
         margin: var(--spacing-sm) 0;
     }
 
     .nav-links li a {
         display: block;
-        padding: 8px;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+    
+    .nav-links li a:hover {
+        background: var(--bg-tertiary);
     }
 
     .acc-dropdown {

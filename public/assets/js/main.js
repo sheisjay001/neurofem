@@ -18,14 +18,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileClose = document.getElementById('mobile-menu-close');
+    const mobileOverlay = document.getElementById('mobile-menu-overlay');
     const navLinks = document.getElementById('nav-links');
 
+    function toggleMenu() {
+        const isOpen = navLinks.classList.toggle('open');
+        mobileOverlay.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : ''; // Prevent background scrolling
+    }
+
     if (mobileToggle && navLinks) {
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            // Update aria-label or similar if needed for a11y
-            const isOpen = navLinks.classList.contains('open');
-            mobileToggle.setAttribute('aria-expanded', isOpen);
+        mobileToggle.addEventListener('click', toggleMenu);
+        
+        if (mobileClose) {
+            mobileClose.addEventListener('click', toggleMenu);
+        }
+        
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', toggleMenu);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                toggleMenu();
+            }
         });
     }
 
