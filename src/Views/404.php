@@ -22,6 +22,19 @@
             <line x1="15" y1="9" x2="15.01" y2="9"></line>
         </svg>
     </div>
+
+    <!-- Debug Info for Vercel Troubleshooting -->
+    <?php if (isset($_GET['debug']) || true): // Always show for now until fixed ?>
+    <div style="margin-top: 40px; padding: 20px; background: #f0f0f0; border-radius: 8px; text-align: left; font-family: monospace; font-size: 0.8rem; overflow: auto;">
+        <h3 style="margin-top: 0;">Debug Info</h3>
+        <p><strong>Request URI:</strong> <?= htmlspecialchars($_SERVER['REQUEST_URI'] ?? 'N/A') ?></p>
+        <p><strong>Script Name:</strong> <?= htmlspecialchars($_SERVER['SCRIPT_NAME'] ?? 'N/A') ?></p>
+        <p><strong>Processed Request:</strong> <?= htmlspecialchars($GLOBALS['request'] ?? 'N/A') ?></p>
+        <p><strong>Controller:</strong> <?= htmlspecialchars($GLOBALS['controllerName'] ?? 'N/A') ?></p>
+        <p><strong>Action:</strong> <?= htmlspecialchars($GLOBALS['actionName'] ?? 'N/A') ?></p>
+        <p><strong>Base URL:</strong> <?= htmlspecialchars(BASE_URL) ?></p>
+    </div>
+    <?php endif; ?>
 </div>
 
 <?php require_once 'layout/footer.php'; ?>

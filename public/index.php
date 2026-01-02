@@ -54,7 +54,10 @@ $script_name = str_replace('\\', '/', $script_name); // Fix windows backslashes
 
 // Only remove script path if it's not root to avoid stripping all slashes
 if ($script_name !== '/' && $script_name !== '/api') {
-    $request = str_replace($script_name, '', $request);
+    // Check if request actually starts with the script path
+    if (strpos($request, $script_name) === 0) {
+        $request = substr($request, strlen($script_name));
+    }
 }
 
 if ($request == '/' || $request == '') {
