@@ -33,6 +33,9 @@
         <p><strong>Controller:</strong> <?= htmlspecialchars($GLOBALS['controllerName'] ?? 'N/A') ?></p>
         <p><strong>Action:</strong> <?= htmlspecialchars($GLOBALS['actionName'] ?? 'N/A') ?></p>
         <p><strong>Base URL:</strong> <?= htmlspecialchars(BASE_URL) ?></p>
+        <p><strong>Root Path:</strong> <?= htmlspecialchars(ROOT_PATH) ?></p>
+        <p><strong>Src Path:</strong> <?= htmlspecialchars(SRC_PATH) ?></p>
+        <p><strong>Attempted Autoload:</strong> <?= htmlspecialchars($GLOBALS['controllerName'] ?? 'N/A') ?></p>
     </div>
     <?php endif; ?>
 </div>

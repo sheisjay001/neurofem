@@ -27,9 +27,49 @@ define('BASE_URL', $base_url);
 spl_autoload_register(function ($class_name) {
     // Convert namespace to full file path
     // Example: Controllers\HomeController -> src/Controllers/HomeController.php
-    $file = SRC_PATH . '/' . str_replace('\\', '/', $class_name) . '.php';
-    if (file_exists($file)) {
-        require $file;
+    $path_parts = explode('\\', $class_name);
+    $path = SRC_PATH;
+    
+    foreach ($path_parts as $part) {
+        $found = false;
+        // Try exact match first
+        if (file_exists($path . '/' . $part)) {
+            $path .= '/' . $part;
+            $found = true;
+        } elseif (is_dir($path)) {
+            // Case-insensitive search
+            $files = scandir($path);
+            foreach ($files as $file) {
+                if (strtolower($file) === strtolower($part)) {
+                    $path .= '/' . $file;
+                    $found = true;
+                    break;
+                }
+                // Check if it is a file with .php extension
+                if (strtolower($file) === strtolower($part . '.php')) {
+                    $path .= '/' . $file;
+                    $found = true;
+                    break;
+                }
+            }
+        }
+        
+        if (!$found) {
+             // Try appending .php for the last part
+             if (file_exists($path . '/' . $part . '.php')) {
+                 $path .= '/' . $part . '.php';
+                 $found = true;
+             }
+        }
+    }
+    
+    // Final check if it ends with .php
+    if (substr($path, -4) !== '.php') {
+        $path .= '.php';
+    }
+
+    if (file_exists($path)) {
+        require $path;
     }
 });
 
