@@ -55,12 +55,20 @@
                 <ul class="history-list">
                     <?php foreach ($moodHistory as $log): ?>
                         <li class="history-item">
-                            <div class="history-meta">
-                                <span class="history-date"><?= date('M d, H:i', strtotime($log['created_at'])) ?></span>
-                                <div class="history-badges">
-                                    <span class="badge mood-<?= $log['mood_level'] ?>">Mood: <?= $log['mood_level'] ?>/5</span>
-                                    <span class="badge energy-<?= $log['energy_level'] ?>">Energy: <?= $log['energy_level'] ?>/5</span>
+                            <div class="history-meta" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div>
+                                    <span class="history-date"><?= date('M d, H:i', strtotime($log['created_at'])) ?></span>
+                                    <div class="history-badges">
+                                        <span class="badge mood-<?= $log['mood_level'] ?>">Mood: <?= $log['mood_level'] ?>/5</span>
+                                        <span class="badge energy-<?= $log['energy_level'] ?>">Energy: <?= $log['energy_level'] ?>/5</span>
+                                    </div>
                                 </div>
+                                <form method="POST" action="<?= BASE_URL ?>/dashboard/deleteCheckin" onsubmit="return confirm('Delete this check-in?');" style="margin: 0;">
+                                    <input type="hidden" name="checkin_id" value="<?= $log['id'] ?>">
+                                    <button type="submit" class="btn-icon" aria-label="Delete" style="background: none; border: none; cursor: pointer; color: var(--text-tertiary); padding: 4px; display: flex; align-items: center; justify-content: center;">
+                                        <?= \Helpers\Icon::get('trash') ?>
+                                    </button>
+                                </form>
                             </div>
                             <?php if (!empty($log['note'])): ?>
                                 <p class="history-note"><?= htmlspecialchars($log['note']) ?></p>

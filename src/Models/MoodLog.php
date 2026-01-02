@@ -65,4 +65,12 @@ class MoodLog {
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function delete($id, $user_id) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id AND user_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':user_id', $user_id);
+        return $stmt->execute();
+    }
 }
