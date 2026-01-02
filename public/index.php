@@ -16,7 +16,7 @@ require_once ROOT_PATH . '/config/database.php';
 $script_name = $_SERVER['SCRIPT_NAME'];
 $base_url = dirname($script_name);
 // Ensure no trailing slash unless it's just root
-if ($base_url === '/' || $base_url === '\\') {
+if ($base_url === '/' || $base_url === '\\' || $base_url === '/api') {
     $base_url = '';
 }
 // Fix backslashes on Windows if needed
