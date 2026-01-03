@@ -3,7 +3,7 @@
 <section class="hero">
     <div class="container">
         <h1>Navigate Life on Your Terms</h1>
-        <p>A world-class sanctuary for neurodivergent women. Discover tools, community, and resources designed for the way your mind works.</p>
+        <p>A world-class sanctuary for neurodivergent women. Discover tools and community designed for the way your mind works.</p>
         <div style="margin-top: var(--spacing-lg);">
             <a href="<?= BASE_URL ?>/auth/signup" class="btn btn-primary btn-lg">Join Our Community</a>
             <a href="#features" class="btn btn-outline btn-lg" style="margin-left: 10px;">Explore Features</a>
@@ -16,10 +16,6 @@
         <div class="card">
             <h3><?= \Helpers\Icon::get('leaf') ?> Sensory-Safe Design</h3>
             <p>Our platform is built with you in mind. Calm colors, clear typography, and a distraction-free interface to help you focus on what matters.</p>
-        </div>
-        <div class="card">
-            <h3><?= \Helpers\Icon::get('globe') ?> Global Resources</h3>
-            <p>Whether you are in Africa, Europe, Asia, or the Americas, find local support groups, therapists, and tools relevant to your location.</p>
         </div>
         <div class="card">
             <h3><?= \Helpers\Icon::get('users') ?> Authentic Community</h3>
