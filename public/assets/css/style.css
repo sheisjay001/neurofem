@@ -929,3 +929,104 @@ footer {
     cursor: pointer;
     padding: 5px;
 }
+
+/* Dashboard Sidebar Layout */
+.dashboard-container {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+}
+
+.desktop-sidebar-wrapper {
+    width: 250px;
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(var(--spacing-lg) + 20px);
+}
+
+.dashboard-main-content {
+    flex: 1;
+    min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.sidebar-menu {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sidebar-nav a:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.sidebar-nav a.active {
+    background: var(--brand-primary);
+    color: white;
+}
+
+.sidebar-nav a.active .icon {
+    color: white; /* Ensure icon is white when active */
+}
+
+.sidebar-nav .icon {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background: var(--bg-error-light, #fee2e2);
+    color: var(--error, #ef4444);
+}
+
+/* Hide sidebar on mobile/tablet */
+@media (max-width: 900px) {
+    .desktop-sidebar-wrapper {
+        display: none;
+    }
+    
+    .dashboard-container {
+        display: block; /* Reset flex */
+    }
+}

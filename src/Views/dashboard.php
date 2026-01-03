@@ -1,17 +1,23 @@
 <?php require_once 'layout/header.php'; ?>
 
-<div class="container" style="padding-top: var(--spacing-lg);">
-    <div class="dashboard-header">
-        <h1>Welcome back, <?= htmlspecialchars($_SESSION['user_name']) ?>!</h1>
-        <p class="subtitle">Here is your safe space to navigate and grow.</p>
-        <?php if (!empty($message)): ?>
-            <div class="alert success" style="background: var(--bg-secondary); border: 1px solid var(--success); color: var(--success); padding: 12px; border-radius: var(--radius-md); margin-top: 16px; font-weight: 500;">
-                <?= htmlspecialchars($message) ?>
-            </div>
-        <?php endif; ?>
+<div class="container dashboard-container" style="padding-top: var(--spacing-lg);">
+    <!-- Sidebar for Desktop -->
+    <div class="desktop-sidebar-wrapper">
+        <?php require_once 'layout/sidebar.php'; ?>
     </div>
 
-    <div class="dashboard-grid">
+    <div class="dashboard-main-content">
+        <div class="dashboard-header">
+            <h1>Welcome back, <?= htmlspecialchars($_SESSION['user_name']) ?>!</h1>
+            <p class="subtitle">Here is your safe space to navigate and grow.</p>
+            <?php if (!empty($message)): ?>
+                <div class="alert success" style="background: var(--bg-secondary); border: 1px solid var(--success); color: var(--success); padding: 12px; border-radius: var(--radius-md); margin-top: 16px; font-weight: 500;">
+                    <?= htmlspecialchars($message) ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="dashboard-grid">
         <!-- Mood / Status Check-in -->
         <div class="card mood-tracker">
             <h3><?= \Helpers\Icon::get('leaf') ?> How are you feeling today?</h3>
@@ -112,6 +118,7 @@
                 }
             ?>
         </div>
+    </div>
     </div>
 </div>
 
