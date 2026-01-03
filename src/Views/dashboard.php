@@ -1,13 +1,8 @@
 <?php require_once 'layout/header.php'; ?>
 
-<div class="container dashboard-container" style="padding-top: var(--spacing-lg);">
-    <!-- Sidebar for Desktop -->
-    <div class="desktop-sidebar-wrapper">
-        <?php require_once 'layout/sidebar.php'; ?>
-    </div>
-
-    <div class="dashboard-main-content">
-        <div class="dashboard-header">
+<div class="container" style="padding-top: var(--spacing-lg);">
+    
+    <div class="dashboard-header">
             <h1>Welcome back, <?= htmlspecialchars($_SESSION['user_name']) ?>!</h1>
             <p class="subtitle">Here is your safe space to navigate and grow.</p>
             <?php if (!empty($message)): ?>

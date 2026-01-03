@@ -46,13 +46,14 @@
                         </button>
                     </li>
                     <?php if (!isset($_SESSION['user_id'])): ?>
-                        <li><a href="<?= BASE_URL ?>/">Home</a></li>
-                        <li><a href="#features">Features</a></li>
+                        <li><a href="<?= BASE_URL ?>/"><span class="nav-icon"><?= \Helpers\Icon::get('home') ?></span>Home</a></li>
+                        <li><a href="#features"><span class="nav-icon"><?= \Helpers\Icon::get('leaf') ?></span>Features</a></li>
                     <?php endif; ?>
                     
-                    <li><a href="<?= BASE_URL ?>/resources">Resources</a></li>
+                    <li><a href="<?= BASE_URL ?>/resources"><span class="nav-icon"><?= \Helpers\Icon::get('book') ?></span>Resources</a></li>
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <li><a href="<?= BASE_URL ?>/community">Community</a></li>
+                        <li><a href="<?= BASE_URL ?>/community"><span class="nav-icon"><?= \Helpers\Icon::get('message-circle') ?></span>Community</a></li>
+                        <li><a href="<?= BASE_URL ?>/focus"><span class="nav-icon"><?= \Helpers\Icon::get('clock') ?></span>Focus Room</a></li>
                     <?php endif; ?>
                         <!-- Accessibility Toolbar -->
                     <li class="acc-menu-container">
@@ -83,12 +84,12 @@
                     </li>
 
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <li><a href="<?= BASE_URL ?>/profile" style="font-weight: bold; color: var(--text-primary);">Hi, <?= htmlspecialchars($_SESSION['user_name']) ?></a></li>
-                        <li><a href="<?= BASE_URL ?>/dashboard" class="btn btn-primary">Dashboard</a></li>
-                        <li><a href="<?= BASE_URL ?>/auth/logout" class="btn btn-secondary">Logout</a></li>
+                        <li><a href="<?= BASE_URL ?>/profile" style="font-weight: bold; color: var(--text-primary);"><span class="nav-icon"><?= \Helpers\Icon::get('user') ?></span>Hi, <?= htmlspecialchars($_SESSION['user_name']) ?></a></li>
+                        <li><a href="<?= BASE_URL ?>/dashboard" class="btn btn-primary"><span class="nav-icon"><?= \Helpers\Icon::get('grid') ?></span>Dashboard</a></li>
+                        <li><a href="<?= BASE_URL ?>/auth/logout" class="btn btn-secondary"><span class="nav-icon"><?= \Helpers\Icon::get('log-out') ?></span>Logout</a></li>
                     <?php else: ?>
-        <li><a href="<?= BASE_URL ?>/auth/signup" class="btn btn-outline" style="margin-right: 5px;">Join Community</a></li>
-        <li><a href="<?= BASE_URL ?>/auth/login" class="btn btn-primary">Login</a></li>
+        <li><a href="<?= BASE_URL ?>/auth/signup" class="btn btn-outline" style="margin-right: 5px;"><span class="nav-icon"><?= \Helpers\Icon::get('user-plus') ?></span>Join Community</a></li>
+        <li><a href="<?= BASE_URL ?>/auth/login" class="btn btn-primary"><span class="nav-icon"><?= \Helpers\Icon::get('log-in') ?></span>Login</a></li>
     <?php endif; ?>
                 </ul>
             </nav>
