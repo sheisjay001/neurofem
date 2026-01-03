@@ -47,7 +47,10 @@
                     </li>
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <li><a href="<?= BASE_URL ?>/"><span class="nav-icon"><?= \Helpers\Icon::get('home') ?></span>Home</a></li>
+                        <li><a href="<?= BASE_URL ?>/about"><span class="nav-icon"><?= \Helpers\Icon::get('info') ?></span>About Us</a></li>
                         <li><a href="#features"><span class="nav-icon"><?= \Helpers\Icon::get('leaf') ?></span>Features</a></li>
+                    <?php else: ?>
+                        <li><a href="<?= BASE_URL ?>/about"><span class="nav-icon"><?= \Helpers\Icon::get('info') ?></span>About</a></li>
                     <?php endif; ?>
                     
                     <li><a href="<?= BASE_URL ?>/resources"><span class="nav-icon"><?= \Helpers\Icon::get('book') ?></span>Resources</a></li>
