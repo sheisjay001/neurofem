@@ -40,6 +40,11 @@
                 </button>
 
                 <ul class="nav-links" id="nav-links">
+                    <li class="mobile-only mobile-close-container">
+                        <button id="mobile-menu-close" aria-label="Close Menu">
+                            <?= \Helpers\Icon::get('x') ?>
+                        </button>
+                    </li>
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <li><a href="<?= BASE_URL ?>/">Home</a></li>
                         <li><a href="#features">Features</a></li>
